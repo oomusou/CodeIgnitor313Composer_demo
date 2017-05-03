@@ -19,7 +19,13 @@ class Welcome extends CI_Controller
 
     public function index()
     {
-        $message = $this->notificationService->getMessage();
-        echo($message);
+        $collection = collect([1, 2, 3, 4, 5]);
+        $sum = $collection->map(function($value) {
+            return $value * 2;
+        })->reduce(function ($carry, $value) {
+            return $carry + $value;
+        });
+
+        echo($sum);
     }
 }
